@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>하회탈에서 모나리자까지 | 안동에서 만나는 예술 이야기</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <style>
         * {
             margin: 0;
@@ -16,21 +16,22 @@
             --primary: #1a237e;
             --primary-light: #534bae;
             --accent: #d4af37;
-            --text: #2c3e50;
-            --text-light: #6c757d;
+            --text: #1a1a1a;
+            --text-light: #666666;
             --bg: #ffffff;
             --bg-alt: #f8f9fa;
         }
         
         body {
-            font-family: 'Noto Sans KR', -apple-system, sans-serif;
-            line-height: 1.8;
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            line-height: 1.7;
             color: var(--text);
             background: var(--bg);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
-        /* Smooth scroll */
         html {
             scroll-behavior: smooth;
         }
@@ -69,31 +70,32 @@
         }
         
         .hero-subtitle {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
+            font-size: 1.1rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--accent);
             margin-bottom: 1.5rem;
-            font-weight: 300;
+            font-weight: 500;
             animation: fadeInUp 1s ease-out 0.2s both;
         }
         
         .hero h1 {
-            font-family: 'Noto Serif KR', serif;
             font-size: 4.5rem;
             font-weight: 700;
             margin-bottom: 2rem;
             line-height: 1.2;
             animation: fadeInUp 1s ease-out 0.4s both;
             text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            letter-spacing: -2px;
         }
         
         .hero-tagline {
-            font-size: 1.5rem;
-            font-weight: 300;
+            font-size: 1.6rem;
+            font-weight: 400;
             margin-bottom: 3rem;
             opacity: 0.95;
             animation: fadeInUp 1s ease-out 0.6s both;
+            letter-spacing: -0.5px;
         }
         
         .event-info-card {
@@ -113,20 +115,26 @@
             background: rgba(255,255,255,0.15);
         }
         
-        .event-info-card p {
+        .event-info-item {
             font-size: 1.3rem;
-            margin: 1rem 0;
+            margin: 1.2rem 0;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            text-align: left;
         }
         
-        .event-info-card strong {
+        .event-info-item strong {
             color: var(--accent);
-            margin-right: 1rem;
+            margin-right: 1.5rem;
             font-weight: 600;
-            min-width: 80px;
-            text-align: left;
+            min-width: 70px;
+            flex-shrink: 0;
+        }
+        
+        .event-info-item span {
+            flex: 1;
+            font-weight: 400;
         }
         
         .scroll-indicator {
@@ -170,7 +178,7 @@
         
         .section-label {
             font-size: 0.9rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--accent);
             font-weight: 600;
@@ -178,11 +186,11 @@
         }
         
         .section h2 {
-            font-family: 'Noto Serif KR', serif;
-            font-size: 2.8rem;
+            font-size: 3rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
             font-weight: 700;
+            letter-spacing: -1px;
         }
         
         .section-description {
@@ -190,7 +198,8 @@
             color: var(--text-light);
             max-width: 700px;
             margin: 0 auto;
-            line-height: 1.9;
+            line-height: 1.8;
+            font-weight: 400;
         }
         
         /* Intro Card */
@@ -203,10 +212,11 @@
         }
         
         .intro-card p {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             line-height: 2;
             color: var(--text);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+            font-weight: 400;
         }
         
         .intro-card strong {
@@ -293,6 +303,7 @@
             color: var(--text-light);
             font-size: 1.05rem;
             line-height: 1.7;
+            font-weight: 400;
         }
         
         .timeline-dot {
@@ -353,7 +364,7 @@
         .speaker-title {
             font-size: 1.1rem;
             opacity: 0.95;
-            font-weight: 300;
+            font-weight: 400;
         }
         
         .speaker-body {
@@ -371,6 +382,7 @@
             color: var(--text);
             font-size: 1.05rem;
             line-height: 1.6;
+            font-weight: 400;
         }
         
         .speaker-body li::before {
@@ -381,10 +393,17 @@
             font-size: 0.8rem;
         }
         
-        /* Video Section */
+        /* Video Section - SXSW Style */
+        .video-section {
+            position: relative;
+            background: #000;
+            overflow: hidden;
+        }
+        
         .video-wrapper {
-            max-width: 1000px;
-            margin: 3rem auto;
+            position: relative;
+            max-width: 100%;
+            margin: 0;
             opacity: 0;
             transform: scale(0.95);
             transition: opacity 0.8s ease, transform 0.8s ease;
@@ -400,8 +419,6 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 15px 60px rgba(0,0,0,0.2);
             background: #000;
         }
         
@@ -413,6 +430,62 @@
             height: 100%;
         }
         
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.3) 0%,
+                transparent 20%,
+                transparent 80%,
+                rgba(0,0,0,0.5) 100%
+            );
+        }
+        
+        .video-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><linearGradient id="grad1" x1="0%25" y1="0%25" x2="100%25" y2="100%25"><stop offset="0%25" style="stop-color:rgb(212,175,55);stop-opacity:0.1" /><stop offset="100%25" style="stop-color:rgb(26,35,126);stop-opacity:0.1" /></linearGradient></defs><rect width="1920" height="1080" fill="url(%23grad1)"/><circle cx="200" cy="200" r="100" fill="rgba(212,175,55,0.05)"/><circle cx="1720" cy="880" r="150" fill="rgba(26,35,126,0.05)"/></svg>');
+            background-size: cover;
+            opacity: 0.4;
+        }
+        
+        .video-text-overlay {
+            position: absolute;
+            bottom: 8%;
+            left: 5%;
+            z-index: 2;
+            color: white;
+            max-width: 600px;
+            pointer-events: none;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+        
+        .video-text-overlay h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            letter-spacing: -1px;
+        }
+        
+        .video-text-overlay p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
         /* Places Grid */
         .places-category {
             margin-bottom: 4rem;
@@ -422,7 +495,7 @@
             font-size: 1.8rem;
             color: var(--primary);
             margin-bottom: 2rem;
-            font-weight: 600;
+            font-weight: 700;
             display: flex;
             align-items: center;
         }
@@ -488,6 +561,7 @@
             color: var(--text-light);
             line-height: 1.7;
             font-size: 1.05rem;
+            font-weight: 400;
         }
         
         /* Map Section */
@@ -550,6 +624,7 @@
             margin: 0.8rem 0;
             opacity: 0.9;
             font-size: 1.05rem;
+            font-weight: 400;
         }
         
         .footer-divider {
@@ -580,15 +655,6 @@
             }
         }
         
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
         /* Responsive */
         @media (max-width: 1024px) {
             .timeline::before {
@@ -603,6 +669,20 @@
             .timeline-dot {
                 left: 30px;
             }
+            
+            .video-text-overlay {
+                left: 3%;
+                bottom: 5%;
+                max-width: 90%;
+            }
+            
+            .video-text-overlay h3 {
+                font-size: 1.8rem;
+            }
+            
+            .video-text-overlay p {
+                font-size: 1rem;
+            }
         }
         
         @media (max-width: 768px) {
@@ -616,6 +696,16 @@
             
             .event-info-card {
                 padding: 2rem;
+            }
+            
+            .event-info-item {
+                font-size: 1.1rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .event-info-item strong {
+                margin-bottom: 0.3rem;
             }
             
             .section {
@@ -637,6 +727,14 @@
             .places-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .video-text-overlay h3 {
+                font-size: 1.5rem;
+            }
+            
+            .video-text-overlay p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -647,9 +745,18 @@
             <h1>하회탈에서<br>모나리자까지</h1>
             <div class="hero-tagline">안동에서 만나는 예술 이야기</div>
             <div class="event-info-card">
-                <p><strong>일시</strong> 2025년 11월 1일 (금) 오후 2시</p>
-                <p><strong>장소</strong> 안동 구름에 리조트</p>
-                <p><strong>정원</strong> 선착순 50명 (마감)</p>
+                <div class="event-info-item">
+                    <strong>일시</strong>
+                    <span>2025년 11월 1일 (금) 오후 2시</span>
+                </div>
+                <div class="event-info-item">
+                    <strong>장소</strong>
+                    <span>안동 구름에 리조트</span>
+                </div>
+                <div class="event-info-item">
+                    <strong>정원</strong>
+                    <span>선착순 50명 (마감)</span>
+                </div>
             </div>
         </div>
         <div class="scroll-indicator"></div>
@@ -775,22 +882,22 @@
         </div>
     </div>
 
-    <div class="section" id="video" style="background: var(--bg-alt);">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">Preview</div>
-                <h2>사전 콘텐츠 미리보기</h2>
-                <p class="section-description">행사 전, 유튜브 '도슨트 정우철' 채널을 통해 공개된 안동 예술 투어 영상을 먼저 만나보세요</p>
-            </div>
+    <div class="section video-section" id="video">
+        <div class="container" style="max-width: 100%; padding: 0;">
             <div class="video-wrapper">
                 <div class="video-container">
                     <iframe 
-                        src="https://www.youtube.com/embed/PISHHIjPpXQ" 
+                        src="https://www.youtube.com/embed/PISHHIjPpXQ?autoplay=1&mute=1&loop=1&playlist=PISHHIjPpXQ&controls=0&modestbranding=1" 
                         title="안동 예술 투어" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                     </iframe>
+                    <div class="video-overlay"></div>
+                    <div class="video-text-overlay">
+                        <h3>안동 예술 투어</h3>
+                        <p>행사 전, 유튜브 채널을 통해 먼저 만나본<br>안동의 숨겨진 예술 공간들</p>
+                    </div>
                 </div>
             </div>
         </div>
